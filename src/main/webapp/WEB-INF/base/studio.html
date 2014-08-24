@@ -1,0 +1,66 @@
+
+
+
+<%
+var selected1 = "";
+%>
+<div class="pageContent">
+  <form method="post" action="${ctxPath}/studio/save" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+
+    <input type="hidden" id="id" name="id" value="${studio.id!}">
+
+		<div class="pageFormContent" layoutH="56">
+			
+					<dl>
+		                <dt>名称</dt>
+		                <dd>
+		                <input name="name"  type="text" size="30" value="${studio.name!}" alt=""/>
+		                </dd>
+		            </dl>
+	            
+					<dl>
+		                <dt>url</dt>
+		                <dd>
+		                <input name="url"  type="text" size="30" value="${studio.url!}" alt=""/>
+		                </dd>
+		            </dl>
+	            
+					<dl>
+		                <dt>iap名称</dt>
+		                <dd>
+		                <input name="iapname"  type="text" size="30" value="${studio.iapname!}" alt=""/>
+		                </dd>
+		            </dl>
+	            
+					<dl>
+		                <dt>iap密码</dt>
+		                <dd>
+		                <input name="iappwd"  type="text" size="30" value="${studio.iappwd!}" alt=""/>
+		                </dd>
+		            </dl>
+	            
+					<dl>
+		                <dt>依赖库</dt>
+		                <dd>
+		                <input name="depents"  type="text" size="30" value="${studio.depents!}" alt=""/>
+		                </dd>
+		            </dl>
+	            
+					<dl>
+		                <dt>备注</dt>
+		                <dd>
+		                <input name="memo"  type="text" size="30" value="${studio.memo!}" alt=""/>
+		                </dd>
+		            </dl>
+	            			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

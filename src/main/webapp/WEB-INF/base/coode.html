@@ -1,0 +1,74 @@
+
+
+
+<%
+var selected1 = "";
+%>
+<div class="pageContent">
+  <form method="post" action="${ctxPath}/coode/save" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+
+    <input type="hidden" id="id" name="id" value="${coode.id!}">
+
+		<div class="pageFormContent" layoutH="56">
+			
+					<dl>
+		                <dt>名称</dt>
+		                <dd>
+		                <input name="name"  type="text" size="30" value="${coode.name!}" alt=""/>
+		                </dd>
+		            </dl>
+	            
+					<dl>
+		                <dt>平台</dt>
+		                <dd>
+		                				                	<select name="osid" class="combox"> 
+		                    <%
+                                selected1 = "";                                
+                                for(obj in list_os!)
+                                {
+                                if(isEmpty(coode.osid) || obj.id != coode.osid)
+                                {
+                                selected="";
+                                }else{
+                                selected = "selected='selected'";
+                                }
+                                println("<option value='" + obj.id + "'"+selected+">"+obj.name+"</option>");
+                                }
+                              %>
+		                	</select>
+		                </dd>
+		            </dl>
+
+	            
+					<dl>
+		                <dt>描述</dt>
+		                <dd>
+		                <input name="des"  type="text" size="30" value="${coode.des!}" alt=""/>
+		                </dd>
+		            </dl>
+	            
+					<dl>
+		                <dt>详细</dt>
+		                <dd>
+		                <input name="info"  type="text" size="30" value="${coode.info!}" alt=""/>
+		                </dd>
+		            </dl>
+	            
+					<dl>
+		                <dt>备注</dt>
+		                <dd>
+		                <input name="memo"  type="text" size="30" value="${coode.memo!}" alt=""/>
+		                </dd>
+		            </dl>
+	            			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
