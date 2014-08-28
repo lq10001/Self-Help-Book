@@ -9,18 +9,28 @@
 	<div class="searchBar">
 		<table class="searchContent">
 			<tr>
-			
-				<td>
-					<label>图书ID：</label>
-					<input type="text"  id="bookid" name="bookid" value="${borrowbook.bookid!}"/>
+
+                <td>
+                    <label>员工号：</label>
+                    <input type="text"  id="qrcode" name="qrcode" value="${borrowbook.qrcode!}"/>
+                </td>
+
+                <td>
+                    <label>员工姓名：</label>
+                    <input type="text"  id="name" name="name" value="${borrowbook.name!}"/>
+                </td>
+
+                <td>
+					<label>图书编号：</label>
+					<input type="text"  id="barcode" name="barcode" value="${borrowbook.barcode!}"/>
 				</td>
-			
-				<td>
-					<label>借阅者ID：</label>
-					<input type="text"  id="borrowerid" name="borrowerid" value="${borrowbook.borrowerid!}"/>
-				</td>
-																																		
-				<td>
+
+                <td>
+                    <label>书名：</label>
+                    <input type="text"  id="bookname" name="bookname" value="${borrowbook.bookname!}"/>
+                </td>
+
+                <td>
 					<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
 				</td>
 			</tr>
@@ -35,10 +45,7 @@
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<l1><a class="add" href="${ctxPath}/borrowbook/edit" target="dialog" rel="dlg_form" mask="true" title="添加借书查询" width="520" height="360"><span>添加</span></a></l1>
-			<li><a class="delete" href="${ctxPath}/borrowbook/del?id={sid}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-            <l1><a class="edit" href="${ctxPath}/borrowbook/edit?id={sid}" target="dialog" rel="dlg_form" mask="true" title="修改借书查询" width="520" height="360"><span>修改</span></a></l1>
-		
+
 			<li class="line">line</li>
 		</ul>
 	</div>
@@ -46,16 +53,19 @@
 		<thead>
 			<tr>
 
-			
 				<th>编号</th>
+
+                <th>员工号</th>
+
+                <th>员工姓名</th>
+
+                <th>图书编号</th>
+
+                <th>图书名</th>
+
+                <th>借阅时间</th>
 			
-				<th>图书ID</th>
-			
-				<th>借阅者ID</th>
-			
-				<th>开始时间</th>
-			
-				<th>结束时间</th>
+				<th>还书时间</th>
 			
 				<th>状态</th>
 			
@@ -75,23 +85,37 @@
 				</td>
 			
 				<td>
-					 ${obj.bookid!}
+					 ${obj.qrcode!}
 				</td>
 			
 				<td>
-					 ${obj.borrowerid!}
+					 ${obj.name!}
+				</td>
+
+                <td>
+                    ${obj.barcode!}
+                </td>
+			
+				<td>
+					 ${obj.bookname!}
 				</td>
 			
 				<td>
-					 ${obj.date1!}
+					 ${obj.date1!,"yyyy-MM-dd"}
 				</td>
+
+                <td>
+                    ${obj.date2!,"yyyy-MM-dd"}
+                </td>
 			
 				<td>
-					 ${obj.date2!}
-				</td>
-			
-				<td>
-					 ${obj.state!}
+                    <%
+                    if(obj.state == 1){
+                    print('借阅中....');
+                    }else{
+                    print('已归还');
+                    }
+                    %>
 				</td>
 				
             </tr>    

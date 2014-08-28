@@ -20,6 +20,8 @@ import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.Param;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.List;
 
 @IocBean
 @At("/data")
@@ -44,21 +46,69 @@ public class DataAction {
                       @Param("qrcode")String qrcode)
     {
         Book book = bookService.fetch(Cnd.where("barcode","=",barcode));
-        if (book == null){
+        if (book == null){  //没有这本书
             return 0L;
         }
 
         Borrower borrower = borrowerService.fetch(Cnd.where("qrcode","=",qrcode));
-        if (borrower == null)
+        if (borrower == null) //没有这个用户
         {
-            return 0L;
+            return 1L;
+        }
+
+        Borrowbook borrowbook = borrowbookService.fetch(Cnd.where("barcode","=",barcode).and("state","=","1"));
+        if (borrowbook != null)     //这本书已经被借
+        {
+            return 2L;
+        }
+
+        List<Borrowbook> borrowbookList = borrowbookService.query(Cnd.where("qrcode","=",qrcode).and("state","=","1"),null);
+        if (borrowbookList.size() > 0)  //只能借一本
+        {
+            return 3L;
         }
 
         Borrowbook bb = new Borrowbook();
-        bb.setBookid(book.getId());
-        bb.setBorrowerid(borrower.getId());
+        bb.setQrcode(qrcode);
+        bb.setBarcode(barcode);
+        bb.setState(1L);
+        bb.setDate1(new Date());
         borrowbookService.dao().insert(bb);
 
-        return 1L;
+        return 10L;
     }
+
+    @At
+    @Ok("json")
+    public Long returnBook(@Param("barcode")String barcode)
+    {
+        Book book = bookService.fetch(Cnd.where("barcode","=",barcode));
+        if (book == null){  //没有书
+            return 0L;
+        }
+
+        Borrowbook borrowbook = borrowbookService.fetch(Cnd.where("barcode","=",barcode).and("state","=","1") );
+        if (borrowbook == null)    //书没有借
+        {
+            return 1L;
+        }
+
+        borrowbook.setDate2(new Date());
+        borrowbook.setState(2L);
+        borrowbookService.dao().update(borrowbook);
+        return 10L;
+    }
+
+
+    @At
+    @Ok("json")
+    public String getBookName(@Param("barcode")String barcode)
+    {
+        Book book = bookService.fetch(Cnd.where("barcode","=",barcode));
+        if (book == null){
+            return "0";
+        }
+        return book.getName();
+    }
+
 }

@@ -52,7 +52,9 @@ public class BookAction {
         if(id == null || id == 0){
             request.setAttribute("book", null);
         }else{
-            request.setAttribute("book", bookService.fetch(id));
+            Book book =  bookService.fetch(id);
+            System.out.println(book.getDate1());
+            request.setAttribute("book", book);
         }
     }
 

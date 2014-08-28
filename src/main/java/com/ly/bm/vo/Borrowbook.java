@@ -1,12 +1,11 @@
 package com.ly.bm.vo;
 
 import java.util.Date;
-import org.nutz.dao.entity.annotation.Table;
-import org.nutz.dao.entity.annotation.Column;
-import org.nutz.dao.entity.annotation.Id;
-import org.nutz.dao.entity.annotation.View;
+
+import org.nutz.dao.entity.annotation.*;
 
 @Table("borrowbook")
+@View("borrowview")
 public class Borrowbook{
 
 	@Id
@@ -14,10 +13,10 @@ public class Borrowbook{
 	private Long id;
 
 	@Column
-	private Long bookid;
+	private String barcode;
 
 	@Column
-	private Long borrowerid;
+	private String qrcode;
 
 	@Column
 	private Date date1;
@@ -28,8 +27,18 @@ public class Borrowbook{
 	@Column
 	private Long state;
 
+    //----------view -------
+    @Column
+    @Readonly
+    private String bookname;
 
-	public Long getId() {
+    @Column
+    @Readonly
+    private String name;
+
+
+
+    public Long getId() {
 		return id;
 	}
 
@@ -37,23 +46,23 @@ public class Borrowbook{
 		this.id = id;
 	}
 
-	public Long getBookid() {
-		return bookid;
-	}
+    public String getBarcode() {
+        return barcode;
+    }
 
-	public void setBookid(Long bookid) {
-		this.bookid = bookid;
-	}
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
 
-	public Long getBorrowerid() {
-		return borrowerid;
-	}
+    public String getQrcode() {
+        return qrcode;
+    }
 
-	public void setBorrowerid(Long borrowerid) {
-		this.borrowerid = borrowerid;
-	}
+    public void setQrcode(String qrcode) {
+        this.qrcode = qrcode;
+    }
 
-	public Date getDate1() {
+    public Date getDate1() {
 		return date1;
 	}
 
@@ -76,4 +85,24 @@ public class Borrowbook{
 	public void setState(Long state) {
 		this.state = state;
 	}
+
+
+    public String getBookname() {
+        return bookname;
+    }
+
+    public void setBookname(String bookname) {
+        this.bookname = bookname;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
+
+
