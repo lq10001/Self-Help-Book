@@ -19,6 +19,13 @@ var selected1 = "";
 		            </dl>
 	            
 					<dl>
+		                <dt>备注</dt>
+		                <dd>
+		                <input name="memo"  type="text" size="30" value="${book.memo!}" alt=""/>
+		                </dd>
+		            </dl>
+	            
+					<dl>
 		                <dt>条形码</dt>
 		                <dd>
 		                <input name="barcode"  type="text" size="30" value="${book.barcode!}" alt=""/>
@@ -28,18 +35,26 @@ var selected1 = "";
 					<dl>
 		                <dt>入库时间</dt>
 		                <dd>
-		                <input type="text" name="date1" value='${book.date1!,"yyyy-MM-dd"}' class="date" size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
+		                <input type="text" name="date1" value="${book.date1!,'yyyy-MM-dd'}" class="date" size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
 		                </dd>
 		            </dl>
-		        
-					<dl>
-		                <dt>备注</dt>
-		                <dd>
-		                <input name="memo"  type="text" size="30" value="${book.memo!}" alt=""/>
-		                </dd>
-		            </dl>
-	            			
-		</div>
+
+                    <dl>
+                        <dt>数量</dt>
+                        <dd>
+                            <input type="text" name="num" value="${book.num!}"  size="30" />
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>已借数量</dt>
+                        <dd>
+                            <input type="text" name="borrownum" value="${book.borrownum!}"  size="30" />
+                        </dd>
+                    </dl>
+
+
+        </div>
 		<div class="formBar">
 			<ul>
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>

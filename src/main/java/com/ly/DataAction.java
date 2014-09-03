@@ -50,17 +50,25 @@ public class DataAction {
             return 0L;
         }
 
+        if (book.getNum() == book.getBorrownum())
+        {
+            return 2L;  //这本书已经被借
+        }
+
+
         Borrower borrower = borrowerService.fetch(Cnd.where("qrcode","=",qrcode));
         if (borrower == null) //没有这个用户
         {
             return 1L;
         }
 
+        /*
         Borrowbook borrowbook = borrowbookService.fetch(Cnd.where("barcode","=",barcode).and("state","=","1"));
         if (borrowbook != null)     //这本书已经被借
         {
             return 2L;
         }
+        */
 
         List<Borrowbook> borrowbookList = borrowbookService.query(Cnd.where("qrcode","=",qrcode).and("state","=","1"),null);
         if (borrowbookList.size() > 0)  //只能借一本
@@ -75,19 +83,29 @@ public class DataAction {
         bb.setDate1(new Date());
         borrowbookService.dao().insert(bb);
 
+        book.setBorrownum(book.getBorrownum() + 1);
+        bookService.dao().update(book);
+
         return 10L;
     }
 
     @At
     @Ok("json")
-    public Long returnBook(@Param("barcode")String barcode)
+    public Long returnBook(@Param("barcode")String barcode,
+                           @Param("qrcode")String qrcode)
     {
         Book book = bookService.fetch(Cnd.where("barcode","=",barcode));
         if (book == null){  //没有书
             return 0L;
         }
 
-        Borrowbook borrowbook = borrowbookService.fetch(Cnd.where("barcode","=",barcode).and("state","=","1") );
+        Borrower borrower = borrowerService.fetch(Cnd.where("qrcode","=",qrcode));
+        if (borrower == null) //没有这个用户
+        {
+            return 2L;
+        }
+
+        Borrowbook borrowbook = borrowbookService.fetch(Cnd.where("barcode","=",barcode).and("qrcode","=",qrcode).and("state","=","1") );
         if (borrowbook == null)    //书没有借
         {
             return 1L;
@@ -96,6 +114,10 @@ public class DataAction {
         borrowbook.setDate2(new Date());
         borrowbook.setState(2L);
         borrowbookService.dao().update(borrowbook);
+
+        book.setBorrownum(book.getBorrownum() - 1);
+        bookService.dao().update(book);
+
         return 10L;
     }
 

@@ -14,6 +14,11 @@
 					<label>名称：</label>
 					<input type="text"  id="name" name="name" value="${book.name!}"/>
 				</td>
+			
+				<td>
+					<label>条形码：</label>
+					<input type="text"  id="barcode" name="barcode" value="${book.barcode!}"/>
+				</td>
 																																		
 				<td>
 					<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
@@ -50,6 +55,10 @@
 			
 				<th>入库时间</th>
 			
+				<th>已借数量</th>
+			
+				<th>数量</th>
+			
 			</tr>
 		</thead>
 		<tbody>
@@ -74,7 +83,15 @@
 				</td>
 			
 				<td>
-					 ${obj.date1!,"yyyy-MM-dd"}
+					 ${obj.date1!}
+				</td>
+			
+				<td>
+					 ${obj.borrownum!}
+				</td>
+			
+				<td>
+					 ${obj.num!}
 				</td>
 				
             </tr>    
