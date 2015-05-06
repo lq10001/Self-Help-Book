@@ -1,0 +1,3 @@
+[submodule "src/main/webapp/BJUI"]
+	path = src/main/webapp/BJUI
+	url = https://git.oschina.net/xknaan/B-JUI.git
