@@ -1,7 +1,6 @@
 package com.ly;
 
 import com.ly.comm.AppContext;
-import com.ly.comm.CBData;
 import org.nutz.mvc.NutConfig;
 import org.nutz.mvc.Setup;
 
