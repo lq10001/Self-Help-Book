@@ -11,3 +11,4 @@
 */classes/*
 */target/*
 *target/*
+src/main/webapp/WEB-INF/ehcache.xml
