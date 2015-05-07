@@ -1,6 +1,6 @@
 package com.ly.bm.action;
 
-import com.ly.comm.Dwz;
+import com.ly.comm.Bjui;
 import com.ly.comm.Page;
 import com.ly.comm.ParseObj;
 import org.nutz.dao.Cnd;
@@ -15,6 +15,9 @@ import org.nutz.mvc.filter.CheckSession;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
+
+import net.sf.ehcache.CacheManager;
+
 
 import com.ly.bm.vo.Book;
 import com.ly.bm.service.BookService;
@@ -36,38 +39,54 @@ public class BookAction {
     public void index(@Param("..")Page p,
                       @Param("..")Book book,
                       HttpServletRequest request){
-        Cnd c = new ParseObj(book).getCnd();
-        List<Book> list_m = bookService.query(c, p);
-        p.setRecordCount(bookService.count(c));
 
-        request.setAttribute("list_obj", list_m);
+        Cnd c = new ParseObj(book).getCnd();
+        if (c == null || c.equals(""))
+        {
+            p.setRecordCount(bookService.listCount(c));
+            request.setAttribute("list_obj", bookService.queryCache(c,p));
+        }else{
+            p.setRecordCount(bookService.count(c));
+            request.setAttribute("list_obj", bookService.query(c,p));
+        }
+
         request.setAttribute("page", p);
         request.setAttribute("book", book);
     }
 
     @At
     @Ok("beetl:/WEB-INF/bm/book.html")
-    public void edit(@Param("id")Long id,
+    public void edit(@Param("action")int action,
+                     @Param("id")Long id,
                       HttpServletRequest request){
         if(id == null || id == 0){
             request.setAttribute("book", null);
         }else{
-            Book book =  bookService.fetch(id);
-            System.out.println(book.getDate1());
+
+            Book book = bookService.fetch(id);
             request.setAttribute("book", book);
         }
+        request.setAttribute("action", action);
     }
 
     @At
     @Ok("json")
-    public Map<String,String> save( @Param("..")Book book){
+    public Map<String,String> save(@Param("action")int action,
+                                @Param("..")Book book){
         Object rtnObject;
         if (book.getId() == null || book.getId() == 0) {
             rtnObject = bookService.dao().insert(book);
         }else{
-            rtnObject = bookService.dao().updateIgnoreNull(book);
+            if (action == 3) {
+                book.setId(null);
+                rtnObject = bookService.dao().insert(book);
+            }else{
+                rtnObject = bookService.dao().updateIgnoreNull(book);
+            }
         }
-        return Dwz.rtnMap((rtnObject == null) ? false : true, "book", "closeCurrent");
+        CacheManager.getInstance().getCache(BookService.CACHE_NAME).removeAll();
+        return Bjui.rtnMap((rtnObject == null) ? false : true, "tab_book", true);
+
     }
 
     @At
@@ -75,7 +94,8 @@ public class BookAction {
     public Map<String,String> del(@Param("id")Long id)
     {
         int num =  bookService.delete(id);
-        return Dwz.rtnMap((num > 0) ? true : false , "book", "");
+        CacheManager.getInstance().getCache(BookService.CACHE_NAME).removeAll();
+        return Bjui.rtnMap((num > 0) ? true : false , "tab_book",false);
     }
 
 }

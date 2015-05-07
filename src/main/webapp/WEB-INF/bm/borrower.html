@@ -1,52 +1,59 @@
 
-
-
 <%
 var selected1 = "";
 %>
-<div class="pageContent">
-  <form method="post" action="${ctxPath}/borrower/save" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+<div class="bjui-pageContent">
+  <form method="post" action="${ctxPath}/borrower/save" class="pageForm" data-toggle="validate">
 
     <input type="hidden" id="id" name="id" value="${borrower.id!}">
+    <input type="hidden" id="action" name="action" value="${action!}">
 
-		<div class="pageFormContent" layoutH="56">
-			
-					<dl>
-		                <dt>姓名</dt>
-		                <dd>
-		                <input name="name"  type="text" size="30" value="${borrower.name!}" alt=""/>
-		                </dd>
-		            </dl>
-	            
-					<dl>
-		                <dt>二维码</dt>
-		                <dd>
-		                <input name="qrcode"  type="text" size="30" value="${borrower.qrcode!}" alt=""/>
-		                </dd>
-		            </dl>
-	            
-					<dl>
-		                <dt>员工号</dt>
-		                <dd>
-		                <input name="no"  type="text" size="30" value="${borrower.no!}" alt=""/>
-		                </dd>
-		            </dl>
-	            
-					<dl>
-		                <dt>备注</dt>
-		                <dd>
-		                <input name="memo"  type="text" size="30" value="${borrower.memo!}" alt=""/>
-		                </dd>
-		            </dl>
-	            			
+
+    	<div class="pageFormContent" data-layout-h="0">
+
+    		<table class="table table-condensed table-hover" width="100%">
+				<tbody>
+
+
+				<tr>
+					<td>
+						<label for="j_name" class="control-label x85">姓名</label>
+						<input type="text" name="name" id="j_name" value="${borrower.name!}" data-rule="" size="20">
+		            </td>
+		        </tr>
+
+				<tr>
+					<td>
+						<label for="j_qrcode" class="control-label x85">二维码</label>
+						<input type="text" name="qrcode" id="j_qrcode" value="${borrower.qrcode!}" data-rule="" size="20">
+		            </td>
+		        </tr>
+
+				<tr>
+					<td>
+						<label for="j_no" class="control-label x85">员工号</label>
+						<input type="text" name="no" id="j_no" value="${borrower.no!}" data-rule="" size="20">
+		            </td>
+		        </tr>
+
+				<tr>
+					<td>
+						<label for="j_memo" class="control-label x85">备注</label>
+						<input type="text" name="memo" id="j_memo" value="${borrower.memo!}" data-rule="" size="20">
+		            </td>
+		        </tr>
+
+				</tbody>
+			</table>
 		</div>
-		<div class="formBar">
-			<ul>
-				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
-				<li>
-					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
-				</li>
-			</ul>
-		</div>
+
+
 	</form>
+</div>
+
+<div class="bjui-pageFooter">
+	<ul>
+		<li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+		<li><button type="submit" class="btn-default" data-icon="save">保存</button></li>
+	</ul>
 </div>

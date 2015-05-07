@@ -1,67 +1,61 @@
 
-
-
 <%
 var selected1 = "";
 %>
-<div class="pageContent">
-  <form method="post" action="${ctxPath}/book/save" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+<div class="bjui-pageContent">
+  <form method="post" action="${ctxPath}/book/save" class="pageForm" data-toggle="validate">
 
     <input type="hidden" id="id" name="id" value="${book.id!}">
-
-		<div class="pageFormContent" layoutH="56">
-			
-					<dl>
-		                <dt>名称</dt>
-		                <dd>
-		                <input name="name"  type="text" size="30" value="${book.name!}" alt=""/>
-		                </dd>
-		            </dl>
-	            
-					<dl>
-		                <dt>备注</dt>
-		                <dd>
-		                <input name="memo"  type="text" size="30" value="${book.memo!}" alt=""/>
-		                </dd>
-		            </dl>
-	            
-					<dl>
-		                <dt>条形码</dt>
-		                <dd>
-		                <input name="barcode"  type="text" size="30" value="${book.barcode!}" alt=""/>
-		                </dd>
-		            </dl>
-	            
-					<dl>
-		                <dt>入库时间</dt>
-		                <dd>
-		                <input type="text" name="date1" value="${book.date1!,'yyyy-MM-dd'}" class="date" size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
-		                </dd>
-		            </dl>
-
-                    <dl>
-                        <dt>数量</dt>
-                        <dd>
-                            <input type="text" name="num" value="${book.num!}"  size="30" />
-                        </dd>
-                    </dl>
-
-                    <dl>
-                        <dt>已借数量</dt>
-                        <dd>
-                            <input type="text" name="borrownum" value="${book.borrownum!}"  size="30" />
-                        </dd>
-                    </dl>
+    <input type="hidden" id="action" name="action" value="${action!}">
 
 
-        </div>
-		<div class="formBar">
-			<ul>
-				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
-				<li>
-					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
-				</li>
-			</ul>
+    	<div class="pageFormContent" data-layout-h="0">
+
+    		<table class="table table-condensed table-hover" width="100%">
+				<tbody>
+
+
+				<tr>
+					<td>
+						<label for="j_name" class="control-label x85">名称</label>
+						<input type="text" name="name" id="j_name" value="${book.name!}" data-rule="" size="20">
+		            </td>
+		        </tr>
+
+				<tr>
+					<td>
+						<label for="j_barcode" class="control-label x85">条形码</label>
+						<input type="text" name="barcode" id="j_barcode" value="${book.barcode!}" data-rule="" size="20">
+		            </td>
+		        </tr>
+
+				<tr>
+					<td>
+						<label for="j_date1" class="control-label x85">入库时间</label>
+
+						<input type="text" name="date1" id="j_date1" value="${book.date1!,'yyyy-MM-dd'}" data-toggle="datepicker" data-rule="date" size="20">
+		            </td>
+		        </tr>
+
+
+				<tr>
+					<td>
+						<label for="j_memo" class="control-label x85">备注</label>
+						<input type="text" name="memo" id="j_memo" value="${book.memo!}" data-rule="" size="20">
+		            </td>
+		        </tr>
+
+				</tbody>
+			</table>
 		</div>
+
+
 	</form>
+</div>
+
+<div class="bjui-pageFooter">
+	<ul>
+		<li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+		<li><button type="submit" class="btn-default" data-icon="save">保存</button></li>
+	</ul>
 </div>
