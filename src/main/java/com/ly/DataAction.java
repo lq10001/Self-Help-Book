@@ -8,7 +8,7 @@ import com.ly.bm.vo.Borrowbook;
 import com.ly.bm.vo.Borrower;
 import com.ly.sys.service.InfoService;
 import com.ly.sys.vo.User;
-import com.ly.util.EnDeCode;
+import com.ly.comm.EnDeCode;
 import org.nutz.dao.Cnd;
 import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;

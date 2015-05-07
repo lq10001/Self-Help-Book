@@ -10,3 +10,6 @@
 [submodule "src/main/webapp/sys"]
 	path = src/main/webapp/sys
 	url = https://git.oschina.net/dongfangx/SYS-RESOURCES-WEBSERVER-NUTZ-JAVA.git
+[submodule "src/main/java/com/ly/comm"]
+	path = src/main/java/com/ly/comm
+	url = https://git.oschina.net/dongfangx/COMMON-WEBSERVER-NUTZ-JAVA.git

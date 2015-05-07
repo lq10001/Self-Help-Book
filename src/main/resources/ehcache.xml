@@ -11,5 +11,23 @@
            overflowToDisk="true"
            diskSpoolBufferSizeMB="1" />
 
+    <!-- book -->
+    <cache name="book" maxElementsInMemory="1000"/>
+
+    <!-- borrower -->
+    <cache name="borrower" maxElementsInMemory="1000"/>
+
+    <!-- borrowbook -->
+    <cache name="borrowbook" maxElementsInMemory="1000"/>
+
+    <!-- returnbook -->
+    <cache name="returnbook" maxElementsInMemory="1000"/>
+
+    <!-- user -->
+    <cache name="user" maxElementsInMemory="1000"/>
+
+    <!-- menu -->
+    <cache name="menu" maxElementsInMemory="1000"/>
+
 
 </ehcache>
