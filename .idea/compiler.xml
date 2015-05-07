@@ -23,9 +23,9 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="maventest" />
+        <module name="MKBOOK" />
         <module name="web" />
       </profile>
     </annotationProcessing>
   </component>
 </project>
-
