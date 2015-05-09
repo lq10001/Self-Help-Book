@@ -21,10 +21,11 @@ def common_clear(submodule_directory, version):
 
 if __name__ == '__main__':
 	""" change commands and add shell"""
-	commands = [["git submodule add --force https://git.oschina.net/dongfangx/COMMON-WEBSERVER-NUTZ-JAVA.git src/main/java/com/ly/comm", 'v1.0'],
-	["git submodule add --force https://git.oschina.net/dongfangx/SYS-JAVA-WEBSERVER-NUTZ.git src/main/java/com/ly/sys", 'v1.0'],
-	["git submodule add --force https://git.oschina.net/dongfangx/SYS-HTML-WEBSERVER-JAVA.git src/main/webapp/WEB-INF/sys", 'v1.0'],
-	["git submodule add --force https://git.oschina.net/dongfangx/SYS-RESOURCES-WEBSERVER-NUTZ-JAVA.git src/main/webapp/sys", 'v1.0']]
+	commands = [
+	["git submodule add --force https://git.oschina.net/dongfangx/SYS-JAVA-WEBSERVER-NUTZ.git src/main/java/com/ly/sys/", 'v1.0'],
+	["git submodule add --force https://git.oschina.net/dongfangx/COMMON-WEBSERVER-NUTZ-JAVA.git src/main/java/com/ly/comm/", 'v1.0'],
+	["git submodule add --force https://git.oschina.net/dongfangx/SYS-HTML-WEBSERVER-JAVA.git src/main/webapp/WEB-INF/sys/", 'v1.0'],
+	["git submodule add --force https://git.oschina.net/dongfangx/SYS-RESOURCES-WEBSERVER-NUTZ-JAVA.git src/main/webapp/sys/", 'v1.0']]
 
 	for cmd in commands:
 		p = subprocess.Popen(cmd[0], stdout=subprocess.PIPE, env=os.environ, shell=True)
