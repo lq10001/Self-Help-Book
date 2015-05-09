@@ -10,3 +10,6 @@
 [submodule "src/main/java/com/ly/src/main/java/com/ly/src/main/webapp/WEB-INF/sys"]
 	path = src/main/java/com/ly/src/main/java/com/ly/src/main/webapp/WEB-INF/sys
 	url = https://git.oschina.net/dongfangx/SYS-HTML-WEBSERVER-JAVA.git
+[submodule "src/main/java/com/ly/src/main/java/com/ly/src/main/webapp/WEB-INF/src/main/webapp/sys"]
+	path = src/main/java/com/ly/src/main/java/com/ly/src/main/webapp/WEB-INF/src/main/webapp/sys
+	url = https://git.oschina.net/dongfangx/SYS-RESOURCES-WEBSERVER-NUTZ-JAVA.git
