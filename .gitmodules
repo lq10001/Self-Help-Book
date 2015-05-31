@@ -13,3 +13,6 @@
 [submodule "src/main/webapp/BJUI"]
 	path = src/main/webapp/BJUI
 	url = https://git.oschina.net/xknaan/B-JUI.git
+[submodule "src/main/webapp/Amazeui"]
+	path = src/main/webapp/Amazeui
+	url = https://git.oschina.net/dongfangx/Amazeui.git
