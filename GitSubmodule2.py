@@ -28,7 +28,10 @@ if __name__ == '__main__':
 	["git submodule add --force https://git.oschina.net/dongfangx/COMMON-WEBSERVER-NUTZ-JAVA.git src/main/java/com/ly/comm/", 'v1.0'],
 	["git submodule add --force https://git.oschina.net/dongfangx/SYS-HTML-WEBSERVER-JAVA.git src/main/webapp/WEB-INF/sys/", 'v1.0'],
 	["git submodule add --force https://git.oschina.net/dongfangx/SYS-RESOURCES-WEBSERVER-NUTZ-JAVA.git src/main/webapp/sys/", 'v1.0'],
-	["git submodule add --force https://git.oschina.net/xknaan/B-JUI.git src/main/webapp/BJUI/", 'master']]
+	["git submodule add --force https://git.oschina.net/xknaan/B-JUI.git src/main/webapp/BJUI/", 'master'],
+	["git submodule add --force https://git.oschina.net/dongfangx/Amazeui.git src/main/webapp/Amazeui/", 'v2.3.0']
+
+	]
 
 	for cmd in commands:
 		p = subprocess.Popen(cmd[0], stdout=subprocess.PIPE, env=os.environ, shell=True)

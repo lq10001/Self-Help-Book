@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Moki | Book</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="alternate icon" type="image/png" href="${ctxPath}/Amazeui/i/favicon.png">
+	<link rel="stylesheet" href="${ctxPath}/Amazeui/css/amazeui.min.css"/>
+	<style>
+		.header {
+			text-align: center;
+		}
+		.header h1 {
+			font-size: 200%;
+			color: #333;
+			margin-top: 30px;
+		}
+		.header p {
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+<div class="header">
+	<div class="am-g">
+		<h1>Moki | Book</h1>
+		<p>摩奇图书借阅查询系统</p>
+	</div>
+	<hr />
+</div>
+<div class="am-g">
+	<div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+		<div>
+			<form id="pagerForm" action="${ctxPath}/web" method="post">
+
+				<input type="hidden" name="pageSize" value="${page.pageSize}" />
+				<input type="hidden" name="pageCurrent" value="${page.pageCurrent}" />
+
+				<div class="bjui-searchBar">
+
+					<label for="name">员工姓名：</label>
+					<input type="text"  id="name" name="name" value="${borrowbook.name!}" class="am-text am-text-xl" size="12"/>
+
+					<label for="bookname">书名：</label>
+					<input type="text"  id="bookname" name="bookname" value="${borrowbook.bookname!}" class="am-text am-text-xl" size="12"/>
+
+					<input type="submit" name="" value="查 询" class="am-btn am-btn-primary am-btn-sm ">
+					<input type="button" name="" value="清空查询" class="am-btn am-btn-warning am-btn-sm" onclick="onClear()">
+				</div>
+
+			</form>
+		</div>
+
+		<hr>
+
+		<div class="am-text-nowrap">
+			<table class="am-table am-table-bordered am-table-striped am-text-nowrap">
+				<thead>
+				<tr>
+					<th>书名</th>
+					<th>总数</th>
+					<th>已借数</th>
+					<th>借书人</th>
+					<th>借书时间</th>
+					<th>状态</th>
+				</tr>
+				</thead>
+				<tbody>
+
+					<%
+					for(obj in list_obj){
+					%>
+
+					<tr >
+
+						<td>
+							${obj.bookname!}
+						</td>
+
+						<td>
+							${obj.num!}
+						</td>
+
+						<td>
+							${obj.borrownum!}
+						</td>
+
+						<td>
+							${obj.name!}
+						</td>
+
+						<td>
+							${obj.date1!,"yyyy-MM-dd"}
+						</td>
+
+						<td>
+							<%
+							if(obj.state == 1){
+							print('借阅中....');
+							}else{
+							print('已归还');
+							}
+							%>
+						</td>
+
+					</tr>
+					<%}%>
+
+				</tbody>
+			</table>
+		</div>
+
+		<hr>
+		<p>© 2015 Moki Book. by zhongwei</p>
+
+
+	</div>
+
+</div>
+</body>
+<script>
+	function onClear()
+	{
+		window.location.href = window.location.href;
+	}
+</script>
+</html>
+

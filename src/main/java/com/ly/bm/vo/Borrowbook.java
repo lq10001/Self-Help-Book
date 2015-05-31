@@ -36,9 +36,16 @@ public class Borrowbook{
     @Readonly
     private String name;
 
+	@Column
+	@Readonly
+	private Long num;
+
+	@Column
+	@Readonly
+	private Long borrownum;
 
 
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -103,6 +110,23 @@ public class Borrowbook{
     public void setName(String name) {
         this.name = name;
     }
+
+
+	public Long getNum() {
+		return num;
+	}
+
+	public void setNum(Long num) {
+		this.num = num;
+	}
+
+	public Long getBorrownum() {
+		return borrownum;
+	}
+
+	public void setBorrownum(Long borrownum) {
+		this.borrownum = borrownum;
+	}
 }
 
 

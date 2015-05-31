@@ -53,10 +53,10 @@ public class BorrowbookAction {
         if (c == null || c.equals(""))
         {
             p.setRecordCount(borrowbookService.listCount(c));
-            request.setAttribute("list_obj", borrowbookService.queryCache(c,p));
+            request.setAttribute("list_obj", borrowbookService.queryCache(Cnd.NEW().desc("date1"),p));
         }else{
             p.setRecordCount(borrowbookService.count(c));
-            request.setAttribute("list_obj", borrowbookService.query(c,p));
+            request.setAttribute("list_obj", borrowbookService.query(c.desc("date1"),p));
         }
 
         request.setAttribute("page", p);
