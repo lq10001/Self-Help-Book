@@ -35,30 +35,54 @@
 <div class="am-g">
 	<div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
 		<div>
-			<form id="pagerForm" action="${ctxPath}/web" method="post">
+			<form id="pagerForm" action="${ctxPath}/web" method="post" class="am-form">
 
 				<input type="hidden" name="pageSize" value="${page.pageSize}" />
 				<input type="hidden" name="pageCurrent" value="${page.pageCurrent}" />
 
-				<div class="bjui-searchBar">
+				<label for="bookname">书名：</label>
+				<input type="text"  id="bookname" name="bookname" value="${borrowbook.bookname!}" class="am-text am-text-xl" size="12"/>
+				<br/>
 
-					<label for="name">员工姓名：</label>
-					<input type="text"  id="name" name="name" value="${borrowbook.name!}" class="am-text am-text-xl" size="12"/>
+				<label for="name">员工姓名：</label>
+				<input type="text"  id="name" name="name" value="${borrowbook.name!}" class="am-text am-text-xl" size="12"/>
 
-					<label for="bookname">书名：</label>
-					<input type="text"  id="bookname" name="bookname" value="${borrowbook.bookname!}" class="am-text am-text-xl" size="12"/>
+				<br/>
 
-					<input type="submit" name="" value="查 询" class="am-btn am-btn-primary am-btn-sm ">
-					<input type="button" name="" value="清空查询" class="am-btn am-btn-warning am-btn-sm" onclick="onClear()">
-				</div>
+				<input type="submit" name="" value="查 询" class="am-btn am-btn-primary am-btn-sm ">
+				<input type="button" name="" value="清空查询" class="am-btn am-btn-warning am-btn-sm" onclick="onClear()">
 
 			</form>
 		</div>
 
 		<hr>
 
+
+
+			<ul data-am-widget="pagination" class="am-pagination am-pagination-default am-pagination-xs">
+				<li class="am-pagination-first ">
+					<a href="${ctxPath}/web?pageNumber=1" class="">第一页</a>
+				</li>
+
+				<%
+				for(var i=1;i<=page.pageCount;i++){
+				var at = (i == page.pageCurrent ? "am-active" : "");
+				%>
+				<li class="${at}">
+					<a href="${ctxPath}/web?pageNumber=${i}" class="${at}">${i}</a>
+				</li>
+
+				<%
+				}
+				%>
+				<li class="am-pagination-last ">
+					<a href="${ctxPath}/web?pageNumber=${page.pageCount}" class="">最末页</a>
+				</li>
+			</ul>
+
+
 		<div class="am-text-nowrap">
-			<table class="am-table am-table-bordered am-table-striped am-text-nowrap">
+			<table class="am-table am-table-bordered am-table-striped am-text-nowrap am-table-compact">
 				<thead>
 				<tr>
 					<th>书名</th>
@@ -112,6 +136,30 @@
 
 				</tbody>
 			</table>
+		</div>
+
+		<div>
+
+			<ul data-am-widget="pagination" class="am-pagination am-pagination-default">
+				<li class="am-pagination-first ">
+					<a href="${ctxPath}/web?pageNumber=1" class="">第一页</a>
+				</li>
+
+				<%
+				for(var i=1;i<=page.pageCount;i++){
+					var at = (i == page.pageCurrent ? "am-active" : "");
+				%>
+				<li class="${at}">
+					<a href="${ctxPath}/web?pageNumber=${i}" class="${at}">${i}</a>
+				</li>
+
+				<%
+				}
+				%>
+				<li class="am-pagination-last ">
+					<a href="${ctxPath}/web?pageNumber=${page.pageCount}" class="">最末页</a>
+				</li>
+			</ul>
 		</div>
 
 		<hr>
