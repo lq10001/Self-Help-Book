@@ -15,8 +15,8 @@ var ioc = {
                 url             : {java :"$config.get('db-url')"},
                 username        : {java :"$config.get('db-username')"},
                 password        : {java :"$config.get('db-password')"},
-                initialSize     : 3,
-                maxActive       : 5,
+                initialSize     : {java :"$config.get('db-initialSize')"},
+                maxActive       : {java :"$config.get('db-max')"},
                 testOnReturn    : true,
                 //validationQueryTimeout : 5,
                 validationQuery : "select 1"

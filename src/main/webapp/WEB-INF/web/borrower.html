@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Moki | Book</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="alternate icon" type="image/png" href="${ctxPath}/Amazeui/i/favicon.png">
+	<link rel="stylesheet" href="${ctxPath}/Amazeui/css/amazeui.min.css"/>
+	<style>
+		.header {
+			text-align: center;
+		}
+		.header h1 {
+			font-size: 200%;
+			color: #333;
+			margin-top: 30px;
+		}
+		.header p {
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+<div class="header">
+	<div class="am-g">
+		<h1>Moki | Book</h1>
+		<p>摩奇图书借阅查询系统</p>
+	</div>
+	<hr />
+</div>
+<div class="am-g">
+	<div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+		<div>
+			<a class="am-btn am-btn-primary am-btn-sm" href="${ctxPath}/web">返回查询</a>
+		</div>
+
+		<hr>
+
+		<div class="am-text-nowrap">
+			<table class="am-table am-table-bordered am-table-striped am-text-nowrap am-table-compact">
+				<thead>
+				<tr>
+					<th>借阅者</th>
+					<th>借阅时间</th>
+					<th>归还时间</th>
+				</tr>
+				</thead>
+				<tbody>
+
+					<%
+					for(obj in list_obj){
+					%>
+
+					<tr >
+
+						<td>
+							${obj.borrowername!}
+						</td>
+
+						<td>
+							${obj.date1!,"yyyy-MM-dd"}
+						</td>
+
+						<td>
+							${obj.date2!,"yyyy-MM-dd"}
+						</td>
+
+					</tr>
+					<%}%>
+
+				</tbody>
+			</table>
+		</div>
+
+		<hr>
+		<p>© 2015 Moki Book. by zhongwei</p>
+
+
+	</div>
+
+</div>
+</body>
+<script>
+	function goweb()
+	{
+		window.location.href = "${ctxPath}/web";
+	}
+</script>
+</html>
+

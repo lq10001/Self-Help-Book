@@ -1,10 +1,8 @@
 package com.ly.bm.vo;
 
 import java.util.Date;
-import org.nutz.dao.entity.annotation.Table;
-import org.nutz.dao.entity.annotation.Column;
-import org.nutz.dao.entity.annotation.Id;
-import org.nutz.dao.entity.annotation.View;
+
+import org.nutz.dao.entity.annotation.*;
 
 @Table("book")
 public class Book{
@@ -23,7 +21,8 @@ public class Book{
 	private String barcode;
 
 	@Column
-	private Date date1;
+	private Date adddate;
+
 
 	@Column
 	private Long borrownum;
@@ -64,13 +63,6 @@ public class Book{
 		this.barcode = barcode;
 	}
 
-	public Date getDate1() {
-		return date1;
-	}
-
-	public void setDate1(Date date1) {
-		this.date1 = date1;
-	}
 
 	public Long getBorrownum() {
 		return borrownum;
@@ -86,5 +78,14 @@ public class Book{
 
 	public void setNum(Long num) {
 		this.num = num;
+	}
+
+
+	public Date getAdddate() {
+		return adddate;
+	}
+
+	public void setAdddate(Date adddate) {
+		this.adddate = adddate;
 	}
 }

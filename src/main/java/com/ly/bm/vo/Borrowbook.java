@@ -30,11 +30,11 @@ public class Borrowbook{
     //----------view -------
     @Column
     @Readonly
-    private String bookname;
+    private String name;
 
     @Column
     @Readonly
-    private String name;
+    private String borrowername;
 
 	@Column
 	@Readonly
@@ -93,17 +93,15 @@ public class Borrowbook{
 		this.state = state;
 	}
 
+	public String getBorrowername() {
+		return borrowername;
+	}
 
-    public String getBookname() {
-        return bookname;
-    }
+	public void setBorrowername(String borrowername) {
+		this.borrowername = borrowername;
+	}
 
-    public void setBookname(String bookname) {
-        this.bookname = bookname;
-    }
-
-
-    public String getName() {
+	public String getName() {
         return name;
     }
 

@@ -92,9 +92,9 @@ public class BorrowbookAction {
 
                 rows =  new String[]{book.getId().toString(),
                         book.getQrcode(),
-                        book.getName(),
+                        book.getBorrowername(),
                         book.getBarcode(),
-                        book.getBookname(),
+                        book.getName(),
                         book.getDate1() == null ? "" : book.getDate1().toString(),
                         book.getDate2() == null ? "" : book.getDate2().toString(),
                         book.getState() == 1 ? "借阅中...":"已归还"

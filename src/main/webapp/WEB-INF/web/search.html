@@ -40,11 +40,7 @@
 				<input type="hidden" name="pageSize" value="${page.pageSize}" />
 				<input type="hidden" name="pageCurrent" value="${page.pageCurrent}" />
 
-				<label for="bookname">书名：</label>
-				<input type="text"  id="bookname" name="bookname" value="${borrowbook.bookname!}" class="am-text am-text-xl" size="12"/>
-				<br/>
-
-				<label for="name">员工姓名：</label>
+				<label for="name">书名：</label>
 				<input type="text"  id="name" name="name" value="${borrowbook.name!}" class="am-text am-text-xl" size="12"/>
 
 				<br/>
@@ -59,10 +55,7 @@
 
 
 
-			<ul data-am-widget="pagination" class="am-pagination am-pagination-default am-pagination-xs">
-				<li class="am-pagination-first ">
-					<a href="${ctxPath}/web?pageNumber=1" class="">第一页</a>
-				</li>
+			<ul data-am-widget="pagination" style="margin-left: -2px;" class="am-pagination am-pagination-default am-pagination-xs">
 
 				<%
 				for(var i=1;i<=page.pageCount;i++){
@@ -75,9 +68,6 @@
 				<%
 				}
 				%>
-				<li class="am-pagination-last ">
-					<a href="${ctxPath}/web?pageNumber=${page.pageCount}" class="">最末页</a>
-				</li>
 			</ul>
 
 
@@ -85,12 +75,9 @@
 			<table class="am-table am-table-bordered am-table-striped am-text-nowrap am-table-compact">
 				<thead>
 				<tr>
-					<th>书名</th>
-					<th>总数</th>
-					<th>已借数</th>
-					<th>借书人</th>
-					<th>借书时间</th>
-					<th>状态</th>
+					<th>书名(点击书名查看详细借阅者)</th>
+					<th width="50">总数</th>
+					<th width="50">已借数</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -102,7 +89,7 @@
 					<tr >
 
 						<td>
-							${obj.bookname!}
+							<a href="${ctxPath}/web/borrower?barcode=${obj.barcode}" >${obj.name!}</a>
 						</td>
 
 						<td>
@@ -113,23 +100,6 @@
 							${obj.borrownum!}
 						</td>
 
-						<td>
-							${obj.name!}
-						</td>
-
-						<td>
-							${obj.date1!,"yyyy-MM-dd"}
-						</td>
-
-						<td>
-							<%
-							if(obj.state == 1){
-							print('借阅中....');
-							}else{
-							print('已归还');
-							}
-							%>
-						</td>
 
 					</tr>
 					<%}%>
@@ -140,11 +110,12 @@
 
 		<div>
 
-			<ul data-am-widget="pagination" class="am-pagination am-pagination-default">
+			<ul data-am-widget="pagination" style="margin-left: -2px;" class="am-pagination am-pagination-default">
+				<!--
 				<li class="am-pagination-first ">
 					<a href="${ctxPath}/web?pageNumber=1" class="">第一页</a>
 				</li>
-
+				-->
 				<%
 				for(var i=1;i<=page.pageCount;i++){
 					var at = (i == page.pageCurrent ? "am-active" : "");
@@ -156,9 +127,11 @@
 				<%
 				}
 				%>
+				<!--
 				<li class="am-pagination-last ">
 					<a href="${ctxPath}/web?pageNumber=${page.pageCount}" class="">最末页</a>
 				</li>
+				-->
 			</ul>
 		</div>
 
