@@ -10,6 +10,7 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link rel="alternate icon" type="image/png" href="${ctxPath}/Amazeui/i/favicon.png">
 	<link rel="stylesheet" href="${ctxPath}/Amazeui/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="${ctxPath}/chosen/amazeui.chosen.css"/>
 	<style>
 		.header {
 			text-align: center;
@@ -43,10 +44,19 @@
 				<label for="name">书名：</label>
 				<input type="text"  id="name" name="name" value="${borrowbook.name!}" class="am-text am-text-xl" size="12"/>
 
-				<br/>
 
-				<input type="submit" name="" value="查 询" class="am-btn am-btn-primary am-btn-sm ">
-				<input type="button" name="" value="清空查询" class="am-btn am-btn-warning am-btn-sm" onclick="onClear()">
+				<label for="name">图书分类：</label>
+				<select data-am-selected class="my-select">
+					<option>T1</option>
+					<option>T2</option>
+					<option>T3</option>
+				</select>
+
+				<div style="margin-top: 5px;">
+					<input type="submit" name="" value="查 询" class="am-btn am-btn-primary am-btn-sm ">
+					<input type="button" name="" value="清空查询" class="am-btn am-btn-warning am-btn-sm" onclick="onClear()">
+				</div>
+
 
 			</form>
 		</div>
@@ -143,11 +153,22 @@
 
 </div>
 </body>
+
+</html>
+
+<script src="${ctxPath}/Amazeui/js/jquery.min.js"></script>
+<script src="${ctxPath}/chosen/amazeui.chosen.min.js"></script>
+
 <script>
 	function onClear()
 	{
 		window.location.href = window.location.href;
 	}
+	$(function() {
+		$('.my-select').chosen({
+			disable_search:true
+		});
+	});
 </script>
-</html>
+
 
