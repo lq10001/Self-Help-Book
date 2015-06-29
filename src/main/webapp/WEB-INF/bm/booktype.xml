@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false" monitoring="autodetect" dynamicConfig="false">
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+           maxElementsInMemory="1000"
+           eternal="true"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="3600"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="1" />
+
+
+    <!-- id -->
+    <cache name="id" maxElementsInMemory="1000"/>
+
+    <!-- name -->
+    <cache name="name" maxElementsInMemory="1000"/>
+
+    <!-- memo -->
+    <cache name="memo" maxElementsInMemory="1000"/>
+
+</ehcache>

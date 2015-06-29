@@ -11,6 +11,10 @@
            overflowToDisk="true"
            diskSpoolBufferSizeMB="1" />
 
+    <!-- booktype -->
+    <cache name="booktype" maxElementsInMemory="100"/>
+
+
     <!-- book -->
     <cache name="book" maxElementsInMemory="1000"/>
 
