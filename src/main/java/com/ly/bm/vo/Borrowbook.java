@@ -44,6 +44,11 @@ public class Borrowbook{
 	@Readonly
 	private Long borrownum;
 
+	@Column
+	@Readonly
+	private Long booktypeid;
+
+
 
 	public Long getId() {
 		return id;
@@ -124,6 +129,14 @@ public class Borrowbook{
 
 	public void setBorrownum(Long borrownum) {
 		this.borrownum = borrownum;
+	}
+
+	public Long getBooktypeid() {
+		return booktypeid;
+	}
+
+	public void setBooktypeid(Long booktypeid) {
+		this.booktypeid = booktypeid;
 	}
 }
 

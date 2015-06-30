@@ -1,5 +1,6 @@
 package com.ly.bm.action;
 
+import com.ly.bm.service.BooktypeService;
 import com.ly.comm.Bjui;
 import com.ly.comm.Page;
 import com.ly.comm.ParseObj;
@@ -34,6 +35,9 @@ public class BookAction {
 	@Inject
 	private BookService bookService;
 
+    @Inject
+    private BooktypeService booktypeService;
+
     @At("/")
     @Ok("beetl:/WEB-INF/bm/book_list.html")
     public void index(@Param("..")Page p,
@@ -50,6 +54,7 @@ public class BookAction {
             request.setAttribute("list_obj", bookService.query(c,p));
         }
 
+        request.setAttribute("booktypeList",booktypeService.queryCache(null,new Page()));
         request.setAttribute("page", p);
         request.setAttribute("book", book);
     }
@@ -66,6 +71,7 @@ public class BookAction {
             Book book = bookService.fetch(id);
             request.setAttribute("book", book);
         }
+        request.setAttribute("booktypeList",booktypeService.queryCache(null,new Page()));
         request.setAttribute("action", action);
     }
 

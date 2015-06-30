@@ -31,6 +31,28 @@ var selected1 = "";
 
 				<tr>
 					<td>
+						<label for="booktypeid" class="control-label x85">图书分类：</label>
+						<select id="booktypeid" name="booktypeid" data-toggle="selectpicker"  data-width="200">
+							<option value="">请选择</option>
+							<%
+							selected1 = "";
+							for(obj in booktypeList!)
+							{
+							if(isEmpty(book.booktypeid) || obj.id != book.booktypeid)
+							{
+							selected1="";
+							}else{
+							selected1 = "selected='selected'";
+							}
+							println("<option value='" + obj.id + "'"+selected1+">"+obj.name+"</option>");
+							}
+							%>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
 						<label for="j_adddate" class="control-label x85">入库时间</label>
 
 						<input type="text" name="adddate" id="j_adddate" value="${book.adddate!,'yyyy-MM-dd'}" data-toggle="datepicker" data-rule="date" size="20">

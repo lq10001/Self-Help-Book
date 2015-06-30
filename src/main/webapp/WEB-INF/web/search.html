@@ -1,3 +1,7 @@
+<%
+var selected1;
+%>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -46,10 +50,21 @@
 
 
 				<label for="name">图书分类：</label>
-				<select data-am-selected class="my-select">
-					<option>T1</option>
-					<option>T2</option>
-					<option>T3</option>
+				<select data-am-selected name="booktypeid" class="my-select">
+					<option value="">请输入查询条件</option>
+					<%
+					selected1 = "";
+					for(obj in booktypeList!)
+					{
+					if(isEmpty(borrowbook.booktypeid) || obj.id != borrowbook.booktypeid)
+					{
+					selected1="";
+					}else{
+					selected1 = "selected='selected'";
+					}
+					println("<option value='" + obj.id + "'"+selected1+">"+obj.name+"</option>");
+					}
+					%>
 				</select>
 
 				<div style="margin-top: 5px;">

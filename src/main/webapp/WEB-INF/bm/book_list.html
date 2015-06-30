@@ -18,6 +18,24 @@ var selected1 = "";
 				<label for="j_barcode">条形码：</label>
 				<input type="text"  id="j_barcode" name="barcode" value="${book.barcode!}" class="form-control" size="10"/>
 
+			<label for="booktypeid">图书分类：</label>
+			<select id="booktypeid" name="booktypeid" data-toggle="selectpicker"  data-width="100">
+				<option value="">请输入查询条件</option>
+				<%
+				selected1 = "";
+				for(obj in booktypeList!)
+				{
+				if(isEmpty(book.booktypeid) || obj.id != book.booktypeid)
+				{
+				selected1="";
+				}else{
+				selected1 = "selected='selected'";
+				}
+				println("<option value='" + obj.id + "'"+selected1+">"+obj.name+"</option>");
+				}
+				%>
+			</select>
+
 			<button type="submit" class="btn-default" data-icon="search">查询</button>
 			<a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo">清空查询</a>
 
@@ -54,6 +72,8 @@ var selected1 = "";
 
 					<th>条形码</th>
 
+					<th>图书分类</th>
+
 					<th>入库时间</th>
 
 					<th>数量</th>
@@ -88,6 +108,19 @@ var selected1 = "";
 
 			<td>
 				 ${obj.barcode!}
+			</td>
+
+			<td>
+				<%
+				for(obj2 in booktypeList)
+				{
+				if(obj2.id == obj.booktypeid)
+				{
+				print(obj2.name);
+				break;
+				}
+				}
+				%>
 			</td>
 
 

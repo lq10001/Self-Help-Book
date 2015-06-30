@@ -30,6 +30,9 @@ public class Book{
 	@Column
 	private Long num;
 
+	@Column
+	private Long booktypeid;
+
 
 	public Long getId() {
 		return id;
@@ -87,5 +90,13 @@ public class Book{
 
 	public void setAdddate(Date adddate) {
 		this.adddate = adddate;
+	}
+
+	public Long getBooktypeid() {
+		return booktypeid;
+	}
+
+	public void setBooktypeid(Long booktypeid) {
+		this.booktypeid = booktypeid;
 	}
 }

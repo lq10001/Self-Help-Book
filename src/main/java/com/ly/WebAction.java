@@ -1,6 +1,7 @@
 package com.ly;
 
 import com.ly.bm.service.BookService;
+import com.ly.bm.service.BooktypeService;
 import com.ly.bm.service.BorrowbookService;
 import com.ly.bm.vo.Borrowbook;
 import com.ly.comm.Page;
@@ -34,6 +35,9 @@ public class WebAction {
     @Inject
     private BookService bookService;
 
+    @Inject
+    private BooktypeService booktypeService;
+
 
     @At("/")
     @Ok("beetl:/WEB-INF/web/search.html")
@@ -54,11 +58,10 @@ public class WebAction {
             p.setRecordCount(bookService.count(c));
             request.setAttribute("list_obj", bookService.query(c.desc("adddate"), p));
         }
-
-
 //            p.setRecordCount(borrowbookService.count(c));
 //            request.setAttribute("list_obj", borrowbookService.query(c.desc("date1"),p));
 
+        request.setAttribute("booktypeList",booktypeService.queryCache(null,new Page()));
         request.setAttribute("page", p);
         request.setAttribute("borrowbook", borrowbook);
     }
