@@ -1,11 +1,17 @@
 package com.ly;
 
+import com.alibaba.fastjson.JSON;
 import com.ly.bm.service.BookService;
 import com.ly.bm.service.BorrowbookService;
 import com.ly.bm.service.BorrowerService;
+import com.ly.bm.service.TestService;
 import com.ly.bm.vo.Book;
 import com.ly.bm.vo.Borrowbook;
 import com.ly.bm.vo.Borrower;
+import com.ly.bm.vo.Test;
+import com.ly.comm.Page;
+import com.ly.comm.Page2;
+import com.ly.comm.ParseObj;
 import com.ly.sys.service.InfoService;
 import com.ly.sys.vo.User;
 import com.ly.util.EnDeCode;
@@ -21,7 +27,9 @@ import org.nutz.mvc.annotation.Param;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @IocBean
 @At("/data")
@@ -38,6 +46,31 @@ public class DataAction {
 
     @Inject
     private BorrowerService borrowerService;
+
+    @Inject
+    private TestService testService;
+
+    @At("/")
+    @Ok("json")
+    public Map bookList(@Param("..")Page p,
+                      @Param("..")Test test,
+                      HttpServletRequest request){
+        Cnd c = new ParseObj(test).getCnd();
+        List<Test> list_m = testService.query(c, p);
+        p.setRecordCount(testService.count(c));
+
+        Page2 p2 = new Page2();
+        p2.setTotal(100);
+        p2.setCurrent(1);
+
+        Map map = new HashMap();
+        map.put("data", list_m);
+        map.put("page",p2);
+
+        map.put("success",true);
+        return map;
+
+    }
 
 
     @At
