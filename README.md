@@ -5,14 +5,15 @@
 
 ## 预览图
 1 终端首页
-
+![输入图片说明](https://git.oschina.net/uploads/images/2017/0715/223021_82387e1e_3018.png "在这里输入图片标题")
 2 终端借阅 - 二维码/条形码扫描
-
+![输入图片说明](https://git.oschina.net/uploads/images/2017/0715/223031_291ccd0c_3018.png "在这里输入图片标题")
 3 web查询（可嵌入微信）
-
+![输入图片说明](https://git.oschina.net/uploads/images/2017/0715/223041_d55cd0f3_3018.png "在这里输入图片标题")
 4 web图书管理
-
+![输入图片说明](https://git.oschina.net/uploads/images/2017/0715/223050_c047d3ad_3018.png "在这里输入图片标题")
 5 web借阅明细
+![输入图片说明](https://git.oschina.net/uploads/images/2017/0715/223059_165092d4_3018.png "在这里输入图片标题")
 
 ## 产品定位
 组织内部图书自助借阅系统
